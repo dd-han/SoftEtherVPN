@@ -1143,6 +1143,9 @@ UINT CalcPacketLoggingLevel(HUB *hub, PKT *packet)
 // Generate a string to be stored as an HTTP log
 char *BuildHttpLogStr(HTTPLOG *h)
 {
+  /* DMM.com using http send token, so record HTTP Headers are VERY DANGEROUS */
+  return CopyStr("");
+  /*
 	BUF *b;
 	char url[MAX_SIZE];
 	char nullchar = 0;
@@ -1203,6 +1206,7 @@ char *BuildHttpLogStr(HTTPLOG *h)
 	FreeBuf(b);
 
 	return ret;
+  */
 }
 
 // Append an item to the log buffer
